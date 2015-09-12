@@ -1,5 +1,4 @@
 <%= render 'shares/page_title', title: "All Recipes" %>
-<hr/>
 
 <%= will_paginate %>
 
@@ -8,7 +7,7 @@
         <div class="row">
             <div class="col-md-2">
                 <section class="chef_info center">
-                    <%= gravatar_for recipe.chef, size: 100 %>
+                    <%= link_to gravatar_for(recipe.chef, size: 100), chef_path(recipe.chef) %>
                     <h5>Chef Name: <%= recipe.chef.chefname %></h5>
                 </section>
             </div>
@@ -28,7 +27,7 @@
                 <%= link_to like_recipe_path(recipe, like: false), method: :post do %>
                     <i class="glyphicon glyphicon-thumbs-down"></i> &nbsp; <%= recipe.thumbs_down_total %>
                 <% end %>
-            </div>
+                </div>
             </div>
             <div class="col-md-4">
                 <%= image_tag(recipe.picture.url, size: "250x150", class: "gravatar") if recipe.picture? %>
