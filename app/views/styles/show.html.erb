@@ -1,4 +1,4 @@
-<%= render 'shares/page_title', title: "All Recipes" %>
+<%= render 'shares/page_title', title: "Recipe for "+@style.name %>
 
 <ul class="nav nav-tabs">
     <li class="active">
@@ -9,10 +9,10 @@
     </li>
 </ul>
 <br/>
-<%= will_paginate %>
+<%= will_paginate @recipes %>
 
-<% if @recipes.exists? %>
-    <% @recipes.each do |recipe| %>
+<% if @style.recipes.exists? %>
+    <% @style.recipes.each do |recipe| %>
         <div class="row">
             <div class="col-md-2">
                 <section class="chef_info center">
@@ -47,7 +47,7 @@
         </div>
         <hr/>
     <% end %>
-    <%= will_paginate %>
+    <%= will_paginate @recipes %>
 <% else %>
     <p>Have no recipes in this page</p>
 <% end %>
